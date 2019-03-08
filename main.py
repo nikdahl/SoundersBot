@@ -74,7 +74,6 @@ teams = [{'link': '/r/dynamo', 'contains': 'Houston Dynamo'}
 	,{'link': '/r/Rapids', 'contains': 'Colorado Rapids'}
 	,{'link': '/r/minnesotaunited', 'contains': 'Minnesota United'}
 	,{'link': '/r/LAFC', 'contains': 'Los Angeles Football Club'}
-	,{'link': '/r/FCCincinnati', 'contains': 'FC Cincinnati'}
 ]
 
 
