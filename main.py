@@ -74,6 +74,7 @@ teams = [{'link': '/r/dynamo', 'contains': 'Houston Dynamo'}
 	,{'link': '/r/Rapids', 'contains': 'Colorado Rapids'}
 	,{'link': '/r/minnesotaunited', 'contains': 'Minnesota United'}
 	,{'link': '/r/LAFC', 'contains': 'Los Angeles Football Club'}
+	,{'link': '/r/FCCincinnati', 'contains': 'FC Cincinnati'}
 ]
 
 
@@ -115,7 +116,7 @@ def parseTable():
 	page = requests.get("https://www.mlssoccer.com/standings")
 	tree = html.fromstring(page.content)
 
-	firstConf = {'name': "E", 'size': 11}
+	firstConf = {'name': "E", 'size': 12}
 	secondConf = {'name': "W", 'size': 12}
 	standings = []
 	for i in range(0, firstConf['size']+secondConf['size']):
