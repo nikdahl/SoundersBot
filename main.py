@@ -311,6 +311,7 @@ while True:
 	try:
 		teamGames = []
 		nextGameIndex = -1
+		lastRecentIndex = 0
 		for game in schedule:
 			if game['home'] == TEAM_NAME or game['away'] == TEAM_NAME:
 				teamGames.append(game)
@@ -321,7 +322,9 @@ while True:
 		strListGames.append("Date|||Opponent|Result\n")
 		strListGames.append(":---:|:---:|---|:---|:---:|:---:\n")
 
-		for game in teamGames[nextGameIndex-9:nextGameIndex]:
+		lastRecentIndex = 0 if (nextGameIndex - 9 < 0) else nextGameIndex - 9
+
+		for game in teamGames[lastRecentIndex:nextGameIndex]:
 			strListGames.append(game['datetime'].strftime("%m/%d"))
 			strListGames.append("|[](")
 			strListGames.append(getCompLink(game['comp']))
