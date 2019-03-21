@@ -115,7 +115,7 @@ def parseTable():
 	page = requests.get("https://www.mlssoccer.com/standings")
 	tree = html.fromstring(page.content)
 
-	firstConf = {'name': "E", 'size': 11}
+	firstConf = {'name': "E", 'size': 12}
 	secondConf = {'name': "W", 'size': 12}
 	standings = []
 	for i in range(0, firstConf['size']+secondConf['size']):
@@ -310,6 +310,7 @@ while True:
 	try:
 		teamGames = []
 		nextGameIndex = -1
+		lastRecentIndex = 0
 		for game in schedule:
 			if game['home'] == TEAM_NAME or game['away'] == TEAM_NAME:
 				teamGames.append(game)
@@ -320,7 +321,9 @@ while True:
 		strListGames.append("Date|||Opponent|Result\n")
 		strListGames.append(":---:|:---:|---|:---|:---:|:---:\n")
 
-		for game in teamGames[nextGameIndex-9:nextGameIndex]:
+		lastRecentIndex = 0 if (nextGameIndex - 9 < 0) else nextGameIndex - 9
+
+		for game in teamGames[lastRecentIndex:nextGameIndex]:
 			strListGames.append(game['datetime'].strftime("%m/%d"))
 			strListGames.append("|[](")
 			strListGames.append(getCompLink(game['comp']))
